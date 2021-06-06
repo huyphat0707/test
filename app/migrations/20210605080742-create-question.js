@@ -1,29 +1,30 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('tbl_discount', {
+    await queryInterface.createTable('questions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      productId: {
-        type: Sequelize.INTEGER,
+      userId: {
+        type: Sequelize.INTEGER
       },
-      qty: {
-        type: Sequelize.INTEGER,
+      question: {
+        type: Sequelize.STRING,
       },
-      discount: {
-        type: Sequelize.INTEGER,
+      answerCorrect: {
+        type: Sequelize.STRING,
       },
-      start_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
+      inCorrectOne: {
+        type: Sequelize.STRING,
       },
-      end_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
+      inCorrectTwo: {
+        type: Sequelize.STRING,
+      },
+      inCorrectThree: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -36,6 +37,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tbl_discount');
+    await queryInterface.dropTable('questions');
   }
 };

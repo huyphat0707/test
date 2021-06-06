@@ -4,8 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
-const fs = require('fs');
-const https = require('https');
 const app = express();
 app.use(cors());
 app.use(
@@ -29,21 +27,10 @@ app.all('*', (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync('./security/key.pem'),
-      cert: fs.readFileSync('./security/cert.pem'),
-    },
-    app
-  )
-  .listen(PORT, function () {
-    console.log(`Server is running on port ${PORT}.`);
-  });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}.`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
 
 const db = require('./models');
 
