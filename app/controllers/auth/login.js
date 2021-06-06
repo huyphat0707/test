@@ -33,8 +33,7 @@ module.exports = {
         user: {id: user.id, name: user.name, email: user.email},
       });
     } catch (error) {
-      console.log(error);
-      return res.send({success: false, message: 'Serve Error!'});
+      return res.send({success: false, message: 'Serve Error!', error});
     }
   },
 };
